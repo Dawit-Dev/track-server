@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const mongoUri = "";
+const mongoUri =
+  "mongodb+srv://dawit-dev:wHlZTQlXbIq5rQYW@cluster0.vzn1e7u.mongodb.net/?retryWrites=true&w=majority";
 if (!mongoUri) {
   throw new Error(
     `MongoURI was not supplied.  Make sure you watch the video on setting up Mongo DB!`
