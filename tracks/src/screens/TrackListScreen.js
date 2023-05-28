@@ -1,14 +1,10 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
 const TrackListScreen = () => {
-  return (
-    <View>
-      <Text style={{ fontSize: 45 }}>Track List Screen</Text>
-    </View>
-  );
-}
+  return <Text style={{ fontSize: 48 }}>TrackListScreen</Text>;
+};
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
 
-export default TrackListScreen
+export default TrackListScreen;

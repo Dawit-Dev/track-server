@@ -1,14 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
 const SignupScreen = () => {
-  return (
-    <View>
-      <Text style={{ fontSize: 45 }}>Signup Screen</Text>
-    </View>
-  );
-}
+  return <Text style={{ fontSize: 48 }}>Signup Screen</Text>;
+};
 
-export default SignupScreen
+const styles = StyleSheet.create({});
 
-const styles = StyleSheet.create({})
+export default SignupScreen;
