@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
@@ -9,7 +9,7 @@ const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log(state)
+  console.log(state);
 
   return (
     <View style={styles.container}>
@@ -32,10 +32,19 @@ const SignupScreen = ({ navigation }) => {
         autoCapitalize="none"
         autoCorrect={false}
       />
-      {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
+      {state.errorMessage ? (
+        <Text style={styles.errorMessage}>{state.errorMessage}</Text>
+      ) : null}
       <Spacer>
-        <Button title="Sign Up" onPress={() => signup({ email, password})} />
+        <Button title="Sign Up" onPress={() => signup({ email, password })} />
       </Spacer>
+      <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
+        <Spacer>
+          <Text style={styles.link}>
+            Already have an account? Sing in instead
+          </Text>
+        </Spacer>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -56,9 +65,13 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     fontSize: 18,
-    color: 'red',
-    marginLeft: 15
-  }
+    color: "red",
+    marginLeft: 15,
+  },
+  link: {
+    color: "blue",
+    fontSize: 24,
+  },
 });
 
 export default SignupScreen;
