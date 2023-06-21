@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import { NavigationEvents } from "react-navigation";
+// import { NavigationEvents } from "@react-navigation/native";
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
@@ -8,19 +8,28 @@ import NavLink from "../components/NavLink";
 const SignupScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } =
     useContext(AuthContext);
+  
+  useEffect(() => {
+    const clearError = () => {
+      clearErrorMessage()
+    }
+    return clearError;
+  }, [navigation])
 
   return (
     <View style={styles.container}>
-      <NavigationEvents onWillBlur={clearErrorMessage} />
+      {/* <NavigationEvents onWillBlur={clearErrorMessage} /> */}
       <AuthForm
         headerText="Sign Up for Tracker"
         errorMessage={state.errorMessage}
         submitButtonText="Sign Up"
         onSubmit={signup}
+        navigation={navigation}
       />
       <NavLink
         routeName="Signin"
         text="Already have an account? Sign in instead"
+        navigation={navigation}
       />
     </View>
   );

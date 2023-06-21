@@ -22,7 +22,7 @@ export default (shouldTrack, callback) => {
           },
           // (location) => {
           //   addLocation(location);
-          // }
+          // },
           callback
         );
       } catch (e) {

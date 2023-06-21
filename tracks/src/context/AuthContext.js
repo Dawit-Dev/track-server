@@ -18,11 +18,11 @@ const authReducer = (state, action) => {
   }
 };
 
-const tryLocalSignin = (dispatch) => async () => {
+const tryLocalSignin = (dispatch) => async (navigate) => {
   const token = await AsyncStorage.getItem("token");
   if (token) {
     dispatch({ type: "signin", payload: token });
-    navigate("TrackList");
+    navigate("mainFlow");
   } else {
     navigate("Signup");
   }
@@ -37,10 +37,11 @@ const signup =
   async ({ email, password }) => {
     try {
       const response = await trackerApi.post("/signup", { email, password });
+      console.log(response.data.token)
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
 
-      navigate("TrackList");
+      // navigate("TrackList");
     } catch (err) {
       dispatch({
         type: "add_error",
@@ -56,7 +57,7 @@ const signin =
       const response = await trackerApi.post("/signin", { email, password });
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
-      navigate("TrackList");
+      // navigate("TrackList");
     } catch (err) {
       dispatch({
         type: "add_error",

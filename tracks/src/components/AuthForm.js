@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, Text, Input } from "react-native-elements";
 import Spacer from "./Spacer";
+import { Context as AuthContext } from "../context/AuthContext";
 
-const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
-     const [email, setEmail] = useState("");
-     const [password, setPassword] = useState("");
+const AuthForm = ({
+  headerText,
+  errorMessage,
+  onSubmit,
+  submitButtonText,
+  navigation,
+}) => {
+  const { state } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <View>
@@ -32,7 +40,17 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
         <Text style={styles.errorMessage}>{errorMessage}</Text>
       ) : null}
       <Spacer>
-        <Button title={submitButtonText} onPress={() => onSubmit({ email, password })} />
+        <Button
+          title={submitButtonText}
+          onPress={() => {
+            onSubmit({ email, password });
+            if (state.token) {
+              navigation.navigate("mainFlow");
+              setEmail("");
+              setPassword("");
+            }
+          }}
+        />
       </Spacer>
     </View>
   );

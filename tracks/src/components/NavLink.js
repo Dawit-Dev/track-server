@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Spacer from "./Spacer";
-import { withNavigation } from "react-navigation";
+// import { withNavigation } from "@react-navigation/native";
 
 const NavLink = ({ navigation, text, routeName }) => {
   return (
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(NavLink);
+export default NavLink;
