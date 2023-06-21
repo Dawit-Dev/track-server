@@ -13,7 +13,7 @@ const TrackForm = () => {
   } = useContext(LocationContext);
 
   const [saveTrack] = useSaveTrack();
-  console.log(locations.length, "<=== locations length");
+  // console.log(locations.length, "<=== locations length");
   return (
     <>
       <Spacer>

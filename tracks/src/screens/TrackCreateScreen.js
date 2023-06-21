@@ -17,7 +17,7 @@ const TrackCreateScreen = ({ navigation }) => {
   } = useContext(LocationContext);
   const callback = useCallback(
     (location) => {
-      console.log(location)
+      // console.log(location)
       addLocation(location, recording);
     },
     [recording]
