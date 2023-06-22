@@ -1,34 +1,4 @@
-// import React, { useContext } from "react";
-// import { StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
-// import { NavigationEvents } from "@react-navigation/native";
-// import { ListItem } from "react-native-elements";
-// import { Context as TrackContext } from "../context/TrackContext";
-
-// const TrackListScreen = ({ navigation }) => {
-//   const { state, fetchTracks } = useContext(TrackContext);
-
-//   return (
-//     <>
-//       <NavigationEvents onWillFocus={() => fetchTracks()} />
-//       <Text style={{ fontSize: 48 }}>TrackListScreen</Text>
-//       <FlatList
-//         data={state}
-//         keyExtractor={(item) => item._id}
-//         renderItem={({ item }) => {
-//           return <TouchableOpacity>
-//             <ListItem chevron title={item.name} />
-//           </TouchableOpacity>
-//         }}
-//       />
-//     </>
-//   );
-// };
-
-// const styles = StyleSheet.create({});
-
-// export default TrackListScreen;
-
-import React, { useContext, useEffect } from "react";
+ import React, { useContext, useEffect } from "react";
 import { StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
@@ -45,7 +15,7 @@ const TrackListScreen = ({ navigation }) => {
 
   return (
     <>
-      <Text style={{ fontSize: 48 }}>TrackListScreen</Text>
+      {/* <Text style={{ fontSize: 48 }}>TrackListScreen</Text> */}
       <FlatList
         data={state}
         keyExtractor={(item) => item._id}
@@ -68,6 +38,10 @@ const TrackListScreen = ({ navigation }) => {
   );
 };
 
+TrackListScreen.navigationOptiions = {
+  title: "Tracks"
+}
+
 const styles = StyleSheet.create({
   listItemContainer: {
     backgroundColor: "white",
@@ -75,7 +49,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "gray",
   },
   listItemTitle: {
-    fontSize: 9,
+    fontSize: 6,
     fontWeight: "bold",
     color: "black",
   },
